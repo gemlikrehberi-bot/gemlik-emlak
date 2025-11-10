@@ -31,9 +31,13 @@ const Map = dynamicImport(() => import('@/components/Map'), { ssr: false });
 
 const PHONE_OFFICE = process.env.NEXT_PUBLIC_PHONE_OFFICE || '05325517177';
 
-// Dinamik rendering kullan - static generation sorununu çöz
-export const dynamic = 'force-dynamic';
 export const revalidate = 3600; // 1 saat
+
+export function generateStaticParams() {
+  return getAllListings().map((listing) => ({
+    id: `${listing.id}-${listing.slug}`,
+  }));
+}
 
 interface ListingPageProps {
   params: {
