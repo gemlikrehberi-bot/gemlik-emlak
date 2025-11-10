@@ -1,0 +1,188 @@
+import Link from 'next/link';
+import { Phone, Mail, MapPin } from 'lucide-react';
+import { formatPhoneNumber, getWhatsAppLink } from '@/lib/format';
+
+const PHONE_OFFICE = process.env.NEXT_PUBLIC_PHONE_OFFICE || '05325517177';
+const PHONE_CUSTOMER = process.env.NEXT_PUBLIC_PHONE_CUSTOMER || '05325517177';
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="bg-gray-900 text-gray-300">
+      <div className="container-custom py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Hakkımızda */}
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Acilden Emlak</h3>
+            <p className="text-sm mb-4">
+              Gemlik bölgesinde güvenilir emlak danışmanlık hizmetleri
+              sunuyoruz. Hayalinizdeki eve kavuşmanız için buradayız.
+            </p>
+            <p className="text-sm mb-4 text-primary-200">
+              <span className="font-semibold">Rasim Kılıç</span> - Emlak Danışmanı
+            </p>
+            <div className="flex flex-col gap-2 text-sm">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-primary-400" />
+                <span>Gemlik, Bursa</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-primary-400" />
+                <a
+                  href={`tel:${PHONE_OFFICE}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {formatPhoneNumber(PHONE_OFFICE)}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Hızlı Linkler */}
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Hızlı Linkler</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="/gemlik-satilik-daire"
+                  className="hover:text-white transition-colors"
+                >
+                  Satılık Daireler
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/gemlik-emlak"
+                  className="hover:text-white transition-colors"
+                >
+                  Emlak Hizmetleri
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="hover:text-white transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/sss"
+                  className="hover:text-white transition-colors"
+                >
+                  Sıkça Sorulan Sorular
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/iletisim"
+                  className="hover:text-white transition-colors"
+                >
+                  İletişim
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Bölgeler */}
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">
+              Hizmet Verdiğimiz Bölgeler
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="/mahalle/kursunlu"
+                  className="hover:text-white transition-colors"
+                >
+                  Kurşunlu
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/mahalle/umurbey"
+                  className="hover:text-white transition-colors"
+                >
+                  Umurbey
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/mahalle/cumhuriyet"
+                  className="hover:text-white transition-colors"
+                >
+                  Cumhuriyet
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/mahalle/kumla"
+                  className="hover:text-white transition-colors"
+                >
+                  Kumla
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* İletişim */}
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">
+              Bizimle İletişime Geçin
+            </h3>
+            <div className="space-y-3">
+              <a
+                href={getWhatsAppLink(
+                  PHONE_OFFICE,
+                  'Merhaba, emlak hakkında bilgi almak istiyorum.'
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-green-600 hover:bg-green-700 text-white text-center py-2 px-4 rounded-lg transition-colors text-sm font-medium"
+              >
+                WhatsApp ile İletişim
+              </a>
+              <a
+                href={`tel:${PHONE_CUSTOMER}`}
+                className="block bg-primary-600 hover:bg-primary-700 text-white text-center py-2 px-4 rounded-lg transition-colors text-sm font-medium"
+              >
+                Hemen Ara
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Alt Bilgi */}
+        <div className="border-t border-gray-800 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+            <div>
+              © {currentYear} Acilden Emlak. Tüm hakları saklıdır.
+            </div>
+            <div className="flex gap-4">
+              <Link
+                href="/kvkk"
+                className="hover:text-white transition-colors"
+              >
+                KVKK
+              </Link>
+              <Link
+                href="/aydinlatma"
+                className="hover:text-white transition-colors"
+              >
+                Aydınlatma Metni
+              </Link>
+              <Link
+                href="/kunye"
+                className="hover:text-white transition-colors"
+              >
+                Künye
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

@@ -1,0 +1,65 @@
+import { Phone, MessageCircle } from 'lucide-react';
+import { formatPhoneNumber, getWhatsAppLink } from '@/lib/format';
+
+const PHONE_OFFICE = process.env.NEXT_PUBLIC_PHONE_OFFICE || '05325517177';
+const PHONE_CUSTOMER = process.env.NEXT_PUBLIC_PHONE_CUSTOMER || '05325517177';
+
+interface ContactBlockProps {
+  title?: string;
+  subtitle?: string;
+  listingTitle?: string;
+}
+
+/**
+ * İletişim Bloğu - CTA optimize
+ */
+export default function ContactBlock({
+  title = 'Hemen İletişime Geçin',
+  subtitle = 'Sorularınız için bize ulaşın, size en uygun seçenekleri sunalım.',
+  listingTitle,
+}: ContactBlockProps) {
+  const whatsappMessage = listingTitle
+    ? `Merhaba, "${listingTitle}" ilanı hakkında bilgi almak istiyorum.`
+    : 'Merhaba, emlak hakkında bilgi almak istiyorum.';
+
+  return (
+    <div className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-xl p-8 text-white">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">{title}</h2>
+        <p className="text-primary-100">{subtitle}</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+        {/* WhatsApp */}
+        <a
+          href={getWhatsAppLink(PHONE_OFFICE, whatsappMessage)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors flex items-center justify-center gap-3 shadow-lg"
+        >
+          <MessageCircle className="w-5 h-5" />
+          <div className="text-left">
+            <div className="text-xs opacity-90">WhatsApp</div>
+            <div>{formatPhoneNumber(PHONE_OFFICE)}</div>
+          </div>
+        </a>
+
+        {/* Telefon */}
+        <a
+          href={`tel:${PHONE_CUSTOMER}`}
+          className="bg-white hover:bg-gray-100 text-primary-700 font-semibold py-4 px-6 rounded-lg transition-colors flex items-center justify-center gap-3 shadow-lg"
+        >
+          <Phone className="w-5 h-5" />
+          <div className="text-left">
+            <div className="text-xs opacity-75">Hemen Ara</div>
+            <div>{formatPhoneNumber(PHONE_CUSTOMER)}</div>
+          </div>
+        </a>
+      </div>
+
+      <p className="text-center text-sm text-primary-100 mt-4">
+        Pazartesi - Cumartesi: 09:00 - 19:00 | Pazar: Randevu ile
+      </p>
+    </div>
+  );
+}
