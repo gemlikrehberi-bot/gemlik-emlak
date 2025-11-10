@@ -190,45 +190,6 @@ export const mockListings: Listing[] = [
       'Sıfır KDV',
     ],
   },
-  {
-    id: '6',
-    title: 'Gemlik Hisar Mahallesi\'nde Bahçeli 3+1 Müstakil Ev',
-    slug: 'gemlik-hisar-bahceli-3-1-mustakil-ev',
-    priceTRY: 3650000,
-    areaM2: 145,
-    rooms: '3+1',
-    floor: 'Dublex',
-    heating: 'Kombi + Şömine',
-    buildingAge: 6,
-    address: {
-      district: 'Gemlik',
-      neighborhood: 'Hisar',
-      street: 'Mersin Sokak',
-    },
-    geo: {
-      lat: 40.4247,
-      lng: 29.1582,
-    },
-    images: [
-      '/images/listings/placeholder.svg',
-      '/images/listings/placeholder.svg',
-      '/images/listings/placeholder.svg',
-    ],
-    publishedAt: '2025-01-20T09:30:00+03:00',
-    description:
-      'Gemlik Hisar mahallesinde sessiz, yeşil bir sokakta yer alan dubleks 3+1 müstakil evimiz satıştadır. 145 m² net kullanım alanı, 70 m² bakımlı bahçesi ve kapalı garajı bulunan mülk, aile yaşamı için ideal bir konfor sunar. Alt katta geniş salon, şömineli oturma alanı ve ayrı mutfak; üst katta 3 yatak odası ve 2 banyo mevcuttur. Kombi ile ısınma sağlanmakta olup salon şöminesi ekstra ısı ve atmosfer sağlar. Şehir merkezine araçla 5 dakika, sahile 3 dakika mesafede yer alır. Ev, deprem yönetmeliğine uygun olarak inşa edilmiştir ve krediye uygundur. Mutfak ankastreleri, klima ve güvenlik sistemi dahildir.',
-    features: [
-      'Müstakil dubleks',
-      'Şömineli salon',
-      'Bakımlı bahçe',
-      'Kapalı garaj',
-      'Güvenlik sistemi',
-      'Ankastre mutfak',
-      'Klima',
-      'Krediye uygun',
-      'Sahil yakın',
-    ],
-  },
 ];
 
 /**
