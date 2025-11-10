@@ -1,0 +1,4 @@
+{
+  "buildCommand": "cd gemlik-emlak && npm install && npm run build",
+  "outputDirectory": "gemlik-emlak/.next"
+}
